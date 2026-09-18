@@ -6,9 +6,8 @@ body {
   color: #2c2c2c;
   line-height: 1.6;
 }
+/* --- HEADER --- */
 
-/* --- HEADER --- */
-/* --- HEADER --- */
 header {
   padding: 20px 40px;
   display: flex;
@@ -27,7 +26,6 @@ header h2 {
 
 header nav ul.menu {
   display: flex;
-  justify-content: center;
   gap: 30px;
   list-style: none;
   margin: 0;
@@ -48,7 +46,7 @@ header nav ul.menu li a:hover {
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
   header {
-    flex-direction: column;       /* empilha os elementos */
+    flex-direction: row;       /* empilha os elementos */
     align-items: center;          /* centraliza horizontalmente */
     text-align: center;
   }
@@ -60,13 +58,15 @@ header nav ul.menu li a:hover {
 
   header nav ul.menu {
     flex-direction: row;       /* menu em coluna */
-    gap: 30px;                    /* espaçamento entre links */
-    margin: 10px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 3px;                    /* espaçamento entre links */
+    margin: 3px;
     padding: 0;
   }
 
   header nav ul.menu li a {
-    display: block;               /* cada link ocupa linha inteira */
+    display: inline-block;               /* cada link ocupa linha inteira */
     text-align: center;
   }
 
