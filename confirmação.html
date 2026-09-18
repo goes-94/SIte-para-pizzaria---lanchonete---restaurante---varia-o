@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Confirmação- Detalhes do Produto | PIZZAS E SABORES</title>
+  <link rel="stylesheet" href="./ebidas.css" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+  <style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* organiza em coluna */
+  min-height: 100vh;
+}
+
+/* --- HEADER --- */
+header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between; /* título à esquerda, menu à direita */
+  align-items: center;
+}
+
+header h2 {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 3.5rem;
+  color: #b22222;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0; /* remove margens fixas */
+}
+
+header nav ul.menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul.menu li a {
+  text-decoration: none;
+  color: #b22222;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+header nav ul.menu li a:hover {
+  color: #ffd75e;
+}
+
+
+    .box {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 350px;
+      margin: auto;
+    }
+    h1 {
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    h1{
+    display: flex;
+    justify-content: space-evenly;
+}
+    p {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-home {
+      background: #800020;
+      color: #fff;
+    }
+    .btn-home:hover {
+      background: tomato;
+    }
+    .btn-cardapio {
+      background: #28a745;
+      color: #fff;
+    }
+    .btn-cardapio:hover {
+      background: #218838;
+    }
+
+    table {
+      width: 95%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #007BFF;
+      color: #fff;
+    }
+    select {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-weight: bold;
+    }
+
+   /* --- RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;       /* empilha os elementos */
+    align-items: center;          /* centraliza horizontalmente */
+    text-align: center;
+  }
+
+  header h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;          /* espaço entre título e menu */
+  }
+
+  header nav ul.menu {
+    flex-direction: row;       /* menu em coluna */
+    gap: 30px;                    /* espaçamento entre links */
+    margin: 10px;
+    padding: 0;
+  }
+
+  header nav ul.menu li a {
+    display: block;               /* cada link ocupa linha inteira */
+    text-align: center;
+  }
+
+  .box {
+    margin: 20px auto;            /* centraliza a caixa abaixo do header */
+    max-width: 60%;               /* ocupa bem em telas pequenas */
+  }
+}
+
+  </style>
+<body>
+<header>
+    <h2 src="./img/pizzas&sabores" alt="Logo FP" >PIZZAS & SABORES</h2>
+    <nav>
+        <nav>
+    <ul class="menu">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./bebidas.html">Bebidas</a></li>
+      <li><a href="./carrinho.html">Carrinho</a></li>
+      <li><a href="./faleconosco.html">Fale Conosco</a></li>
+    </ul>
+  </nav>
+</header>
+  <div class="box">
+    <h1>Pedido Confirmado!</h1>
+    <p>Obrigado por escolher a <strong>Pizzas & Sabores</strong>.<br>
+    Seu pedido foi enviado com sucesso e nossa equipe entrará em contato em breve pelo WhatsApp.</p>
+    <a href="index.html" class="btn btn-home">Voltar ao Cardápio</a>
+    <!-- <a href="bebidas.html" class="btn btn-cardapio">Ver Bebidas</a> -->
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

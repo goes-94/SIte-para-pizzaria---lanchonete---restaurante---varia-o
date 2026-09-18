@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagamento Pix - Detalhes do Produto | Pizzas & Sabores</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+
+  <style>
+/* --- BODY --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* organiza em coluna */
+  min-height: 100vh;      /* ocupa toda a altura */
+}
+
+/* --- HEADER --- */
+header {
+  /* background: linear-gradient(90deg, #f5e3c3, #d2a679); */
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h2 {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 3.5rem;
+  color: #b22222;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+header nav ul.menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul.menu li a {
+  text-decoration: none;
+  color: #b22222;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+header nav ul.menu li a:hover {
+  color: #ffd75e;
+}
+
+/* --- CONTAINER DO PIX --- */
+.container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  margin: 40px auto; /* centraliza abaixo do header */
+}
+
+/* --- TITULOS --- */
+h1 {
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #800020;
+  margin-bottom: 20px;
+}
+
+/* --- QR CODE --- */
+#qrcode {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* --- PIX KEY --- */
+.pix-key {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* --- BOTÃO --- */
+button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #218838;
+}
+
+/* --- FOOTER --- */
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  header nav ul.menu {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+     <header>
+    <h2 src="./img/pizzas&sabores" alt="Logo FP" >PIZZAS & SABORES</h2>
+    <nav>
+        <nav>
+    <ul class="menu">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./bebidas.html">Bebidas</a></li>
+      <li><a href="./login.html">Painel</a></li>
+      <li><a href="./faleconosco.html">Fale Conosco</a></li>
+    </ul>
+  </nav>
+</header>
+  <div class="container">
+    <h1>Finalize seu Pedido!</h1>
+    <h2>Pagamento via Pix</h2>
+    <p>Escaneie o QR Code abaixo ou copie a chave Pix para pagar seu pedido.</p>
+    <div id="qrcode"></div>
+    <p><strong>Total a pagar:</strong> <span id="valor"></span></p>
+    <div class="pix-key" id="pixKey"></div>
+    <button id="copiar">Copiar Chave Pix</button>
+    <p class="footer">Seu pagamento será confirmado automaticamente.<br>Obrigado e bom apetite!</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script>
+function gerarCRC16(payload) {
+  let polinomio = 0x1021;
+  let resultado = 0xFFFF;
+
+  for (let i = 0; i < payload.length; i++) {
+    resultado ^= (payload.charCodeAt(i) << 8);
+    for (let j = 0; j < 8; j++) {
+      if ((resultado & 0x8000) !== 0) {
+        resultado = (resultado << 1) ^ polinomio;
+      } else {
+        resultado <<= 1;
+      }
+      resultado &= 0xFFFF;
+    }
+  }
+  return resultado.toString(16).toUpperCase().padStart(4, "0");
+}
+
+function campo(id, valor) {
+  const tamanho = valor.length.toString().padStart(2, "0");
+  return id + tamanho + valor;
+}
+
+// 🔑 Usa o valor salvo na finalização
+const total = parseFloat(localStorage.getItem("valorPagamento")) || 0;
+
+const chavePix = "+5541997029155"; 
+const nomeRecebedor = "PizzasSabores"; // até 25 chars
+const cidade = "Itapoa";               // até 15 chars
+const txid = "PEDIDO" + Math.floor(Math.random() * 10000);
+
+let payloadSemCRC =
+  campo("00", "01") +
+  campo("26", campo("00", "BR.GOV.BCB.PIX") + campo("01", chavePix)) +
+  campo("52", "0000") +
+  campo("53", "986") +
+  campo("54", total.toFixed(2)) +
+  campo("58", "BR") +
+  campo("59", nomeRecebedor) +
+  campo("60", cidade) +
+  campo("62", campo("05", txid)) +
+  "6304";
+
+let crc = gerarCRC16(payloadSemCRC);
+let payloadFinal = payloadSemCRC + crc;
+
+// Gera QR Code Pix com o valor correto
+new QRCode(document.getElementById("qrcode"), {
+  text: payloadFinal,
+  width: 200,
+  height: 200
+});
+
+// Exibe valor e chave Pix
+document.getElementById("valor").innerHTML = "R$ " + total.toFixed(2);
+
+document.getElementById("copiar").addEventListener("click", () => {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(payloadFinal)
+      .then(() => alert("Código Pix copiado!"))
+      .catch(() => alert("Não foi possível copiar o código Pix."));
+  } else {
+    const tempInput = document.createElement("input");
+    tempInput.value = payloadFinal;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Código Pix copiado!");
+  }
+});
+
+
+
+// Opcional: limpar valorPagamento depois de usar
+localStorage.removeItem("valorPagamento");
+</script>
+
+
+  <script src="./script.js"></script>
+</body>
+</html>

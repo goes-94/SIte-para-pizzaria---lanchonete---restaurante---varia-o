@@ -1,0 +1,347 @@
+/* --- RESET BÁSICO --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- BODY --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #fff8f0 0%, #f7e4c7 100%);
+  color: #2c2c2c;
+  line-height: 1.6;
+  background: url('./img/fundo-bokeh-claro.jpg') no-repeat center center fixed;
+}
+
+/* --- HEADER --- */
+.main-header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent; /* tom quente escuro translúcido */
+  /* backdrop-filter: blur(4px); */
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  margin: 0%, auto;
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.25); */
+}
+
+/* Título principal */
+.main-header h2 {
+  color: #700f0b; /* amarelo/dourado */
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+
+/* Menu de navegação */
+.main-header nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  list-style: none;
+  margin-left: 0%;
+  margin: 0, auto;
+}
+
+.main-header nav li a {
+    margin: 0, auto;
+  text-decoration: none;
+  color: #700f0b;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-header nav li a:hover {
+  color: #ffd75e;
+  transform: scale(1.08);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    padding: 0px;
+    justify-content: start;
+    border: 0;
+  }
+
+  .main-header nav ul {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 0 0 -40px;
+  }
+
+  .main-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+}
+
+/* --- BREADCRUMB --- */
+.breadcrumb {
+  font-size: 0.9rem;
+  margin: 20px 0;
+}
+
+.breadcrumb a {
+  color: #b22222;
+  text-decoration: none;
+}
+
+/* --- CONTAINER --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* --- PRODUTO --- */
+.product-content-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Galeria de imagens */
+.image-gallery {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.main-product-image {
+    margin: 0%;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Bloco de detalhes */
+.details-block {
+  flex: 1 1 500px;
+}
+
+.product-title {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 2.8rem;
+  color: #b22222;
+  margin-bottom: 15px;
+}
+
+.product-short-description {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Preço e ações */
+.price-and-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #d4af37;
+}
+
+.btn-whatsapp, .btn-carrinho {
+    display: flex;
+    flex-wrap: wrap;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-whatsapp {
+     padding: 6px 5px;
+  border: 3px solid #dba33b;;
+  font-weight: bold;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+
+.btn-carrinho {
+  background: #c1272d;
+  color: #fff;
+  border: 2px solid #d4af37;
+}
+
+.btn-carrinho:hover {
+  background: #8b1a1a;
+}
+
+/* Especificações */
+.specs-title, .description-title {
+  font-size: 1.6rem;
+  color: #b22222;
+  margin: 20px 0 10px;
+}
+
+.specs-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.specs-list li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+/* Descrição completa */
+.full-description {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+  background: transparent #2c2c2c;
+  color: #000000;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-column h3, .footer-column h4 {
+  color: #9d1d19;
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.footer-column p, .footer-column li a{
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #070707;
+}
+
+.footer-column li a {
+    color: #850f0f;
+}
+.footer-column li a:hover {
+    color: #ff0000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ffd75e;
+}
+
+/* --- BOTÃO FIXO WHATSAPP --- */
+#whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#whatsapp-button img {
+  width: 55px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+#whatsapp-button img:hover {
+  transform: scale(1.1);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .product-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-product-image {
+    max-width: 100%;
+  }
+
+  .price-and-action {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header h2 {
+    font-size: 2rem;
+  }
+
+  .product-title {
+    font-size: 2.2rem;
+  }
+  
+}
+
+/* .btn-whatsapp-mt-20{
+       display: flex;
+    flex-wrap: wrap;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-whatsapp-mt-20{
+  padding: 6px 90px;
+  border: 3px solid #dba33b;;
+  font-weight: bold;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-whatsapp-mt-20:hover{
+    background: linear-gradient(90deg, #65ec3c, #f943b0);
+    /* color: #8b1a1a; */
+
+} */

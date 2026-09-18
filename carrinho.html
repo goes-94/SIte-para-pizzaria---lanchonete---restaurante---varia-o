@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho | PIZZAS & SABORES</title>
+    <link rel="stylesheet" href="./tyle.css">
+  </head>  
+    <style>
+    body{
+      font-family:arial, sans-serif;
+      margin:0;
+      background:#f9f9f9
+    }
+    /* --- HEADER --- */
+header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between; /* título à esquerda, menu à direita */
+  align-items: center;
+}
+
+header h2 {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 3.5rem;
+  color: #b22222;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0; /* remove margens fixas */
+}
+
+header nav ul.menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul.menu li a {
+  text-decoration: none;
+  color: #b22222;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+header nav ul.menu li a:hover {
+  color: #ffd75e;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;       /* empilha os elementos */
+    align-items: center;          /* centraliza horizontalmente */
+    text-align: center;
+  }
+
+  header h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;          /* espaço entre título e menu */
+  }
+
+  header nav ul.menu {
+    flex-direction: row;       /* menu em coluna */
+    gap: 30px;                    /* espaçamento entre links */
+    margin: 10px;
+    padding: 0;
+  }
+
+  header nav ul.menu li a {
+    display: block;               /* cada link ocupa linha inteira */
+    text-align: center;
+  }
+
+}
+      main{
+        max-width:900px;
+        margin:30px auto;
+        padding:20px
+      }
+      h1{
+        text-align:center
+      }
+      #lista-carrinho{
+          list-style:none;
+          padding:0
+      }
+      #lista-carrinho li{
+        background:#fff;
+        margin-bottom:10px;
+        padding:15px;
+        border-radius:8px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        box-shadow:0 2px 5px #0002
+      }
+      #lista-carrinho button{
+        background:#800020;
+        color:#fff;
+        border:0;
+        padding:6px 10px;
+        border-radius:4px;
+        cursor:pointer;
+        margin:0 3px
+        }
+      #finalizar{
+        display:block;
+        margin:20px auto;
+        background:#28a745;
+        color:#fff;
+        border:0;
+        padding:12px 20px;
+        border-radius:6px;
+        cursor:pointer;
+        font-size:16px
+        }
+      #total{
+        text-align:right;
+        font-size:18px;
+        font-weight:bold
+        }
+      .empty{
+        text-align:center;
+        color:#666;
+        font-size:18px;
+        margin-top:40px
+        }
+      </style>
+<body>
+  <header class="main-header">
+    <h2>Pizzas & Sabores</h2>
+    <nav>
+      <ul class="menu"><li>
+        <a href="./index.html">Home</a>
+      </li>
+      <li><a href="./bebidas.html">Bebidas</a></li>
+      <li><a href="./login.html">Painel</a></li>
+    </ul>
+  </nav>
+</header>
+  <main>
+    <h1 id="title-carrinho">🛒 Seu Carrinho</h1>
+    <ul id="lista-carrinho"></ul>
+    <p id="total"></p>
+    <button id="finalizar" type="button">Enviar pedido</button>
+    <p id="mensagem-vazio" class="empty" style="display:none">Seu carrinho está vazio.</p>
+  </main>
+ <script type="module" src="./firebase.js"></script>
+<script type="module" src="./script.js"></script>
+
+<style>
+  #title-carrinho {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+
+  }
+</style>
+
+  <script src="./script.js"></script>
+</body></html>
